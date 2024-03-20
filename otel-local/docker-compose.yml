@@ -1,9 +1,9 @@
 version: '3'
 
-# networks:
-#   default:
-#     name: opentelemetry-demo
-#     driver: bridge
+networks:
+  default:
+    name: opentelemetry-demo
+    driver: bridge
 
 services:
   app:
@@ -15,13 +15,13 @@ services:
     environment:
       OTEL_EXPORTER_OTLP_METRICS_ENDPOINT: "http://otel:4318/v1/metrics"
       OTEL_EXPORTER_OTLP_METRICS_PROTOCOL: "http/protobuf"
-    # networks:
-    #   - default
+    networks:
+      - default
   otel:
     build: .
     command: ["--config=/etc/otelcol/otel-config-local.yaml"]
     ports:
       - "4317"
       - "4318:4318"
-    # networks:
-    #   - default
+    networks:
+      - default
