@@ -1,5 +1,8 @@
 FROM python:3.9-alpine
 
+ENV OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="http://127.0.0.1:4317"
+ENV OTEL_EXPORTER_OTLP_METRICS_PROTOCOL="grpc"
+
 WORKDIR /code
 
 COPY ./requirements.txt /code/requirements.txt
