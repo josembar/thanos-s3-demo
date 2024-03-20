@@ -1,3 +1,5 @@
+import os
+
 from fastapi import FastAPI
 
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
@@ -16,8 +18,11 @@ resource = Resource(attributes={
     SERVICE_NAME: "test-service"
 })
 
-# reader = PeriodicExportingMetricReader(OTLPMetricExporter())
-reader = PeriodicExportingMetricReader(ConsoleMetricExporter())
+metrics_endpoint_environment_variables = ["OTEL_EXPORTER_OTLP_ENDPOINT", "OTEL_EXPORTER_OTLP_METRICS_ENDPOINT"]
+if any(variable in metrics_endpoint_environment_variables for variable in os.environ):
+    reader = PeriodicExportingMetricReader(OTLPMetricExporter())
+else: 
+    reader = PeriodicExportingMetricReader(ConsoleMetricExporter())
 meterProvider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(meterProvider)
 
