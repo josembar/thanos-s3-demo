@@ -5,8 +5,8 @@ from fastapi import FastAPI
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
 from opentelemetry import metrics
-# from opentelemetry.exporter.otlp.proto.grpc.metric_exporter import OTLPMetricExporter
-from opentelemetry.exporter.otlp.proto.http.metric_exporter import OTLPMetricExporter
+from opentelemetry.exporter.otlp.proto.grpc.metric_exporter import OTLPMetricExporter
+# from opentelemetry.exporter.otlp.proto.http.metric_exporter import OTLPMetricExporter
 from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader, ConsoleMetricExporter
 
@@ -26,6 +26,7 @@ else:
 
 metrics_endpoint_environment_variables = ["OTEL_EXPORTER_OTLP_ENDPOINT", "OTEL_EXPORTER_OTLP_METRICS_ENDPOINT"]
 if any(variable in metrics_endpoint_environment_variables for variable in os.environ):
+    print(f"endpoint: {os.getenv('OTEL_EXPORTER_OTLP_ENDPOINT') or os.getenv('OTEL_EXPORTER_OTLP_METRICS_ENDPOINT')}")
     reader = PeriodicExportingMetricReader(OTLPMetricExporter())
 else: 
     reader = PeriodicExportingMetricReader(ConsoleMetricExporter())
