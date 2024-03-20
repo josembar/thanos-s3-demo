@@ -15,14 +15,11 @@ from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
 app = FastAPI()
 
 # Service name is required for most backends
-if "OTEL_SERVICE_NAME" in os.environ:
-    resource = Resource(attributes={
-        SERVICE_NAME: os.environ["OTEL_SERVICE_NAME"]
-    })
-else:
-    resource = Resource(attributes={
-        SERVICE_NAME: "test-service"
-    })
+service_name = os.getenv('OTEL_SERVICE_NAME') or "test-service"
+print(f"service name: {service_name}")
+resource = Resource(attributes={
+        SERVICE_NAME: service_name
+})
 
 metrics_endpoint_environment_variables = ["OTEL_EXPORTER_OTLP_ENDPOINT", "OTEL_EXPORTER_OTLP_METRICS_ENDPOINT"]
 if any(variable in metrics_endpoint_environment_variables for variable in os.environ):
