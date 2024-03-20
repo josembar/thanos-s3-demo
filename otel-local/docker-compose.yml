@@ -9,5 +9,6 @@ services:
       OTEL_EXPORTER_OTLP_METRICS_ENDPOINT: "localhost:4317"
   otel:
     build: .
+    command: ["--config=/etc/otelcol/otel-config-local.yaml"]
     ports:
       - "4317:4317"
