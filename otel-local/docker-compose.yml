@@ -13,7 +13,7 @@ services:
     ports:
       - "80:80"
     environment:
-      OTEL_EXPORTER_OTLP_ENDPOINT: "http://otel:4318"
+      OTEL_EXPORTER_OTLP_METRICS_ENDPOINT: "http://otel:4318/v1/metrics"
       OTEL_EXPORTER_OTLP_METRICS_PROTOCOL: "http/protobuf"
     networks:
       - default
