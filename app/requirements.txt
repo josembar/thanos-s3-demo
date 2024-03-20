@@ -4,3 +4,4 @@ uvicorn>=0.15.0,<0.16.0
 opentelemetry-sdk
 opentelemetry-instrumentation-fastapi
 opentelemetry-exporter-otlp-proto-grpc
+opentelemetry-exporter-otlp-proto-http
