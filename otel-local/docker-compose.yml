@@ -8,7 +8,6 @@ networks:
 services:
   app:
     build: ../app/
-    container_name: app
     depends_on:
       - otel
     ports:
@@ -20,7 +19,6 @@ services:
       - default
   otel:
     build: .
-    container_name: otel
     command: ["--config=/etc/otelcol/otel-config-local.yaml"]
     ports:
       - "4317"
