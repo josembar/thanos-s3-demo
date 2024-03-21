@@ -4,7 +4,7 @@ AWS_REGION="us-east-1"
 AWS_ACCOUNT_ID="989307503852"
 IMAGE_NAME="test-app"
 OTEL_IMAGE_NAME="otel"
-THANOS_IMAGE_NAME="thanos-sidecar"
+THANOS_IMAGE_NAME="thanos-receive"
 REPO_NAME="test"
 
 docker build -t $IMAGE_NAME ../app
