@@ -8,7 +8,7 @@ receivers:
 exporters:
   debug:
     verbosity: detailed
-  prometheus/thanos:
+  prometheusremotewrite/thanos:
     endpoint: "localhost:10908/api/v1/receive"
     namespace: test-app
     resource_to_telemetry_conversion:
@@ -20,7 +20,7 @@ service:
       exporters: [debug]
     metrics:
       receivers: [otlp]
-      exporters: [debug, prometheus/thanos]
+      exporters: [debug, prometheusremotewrite/thanos]
     logs:
       receivers: [otlp]
       exporters: [debug]
