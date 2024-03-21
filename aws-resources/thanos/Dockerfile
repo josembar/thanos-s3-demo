@@ -1,1 +1,1 @@
-FROM quay.io/thanos/thanos
+FROM quay.io/thanos/thanos:main-2024-03-21-4a2a455
