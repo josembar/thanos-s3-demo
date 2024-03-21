@@ -1,0 +1,8 @@
+type: S3
+config:
+  bucket: "test-thanos-demo-jose"
+  endpoint: "s3.us-east-1.amazonaws.com"
+  region: "us-east-1"
+  aws_sdk_auth: true
+  signature_version2: false
+prefix: "app"
