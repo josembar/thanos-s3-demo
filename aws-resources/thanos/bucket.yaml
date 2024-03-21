@@ -5,4 +5,6 @@ config:
   region: "us-east-1"
   aws_sdk_auth: true
   signature_version2: false
+  sse_config:
+    type: "SSE-S3"
 prefix: "app"
