@@ -11,6 +11,8 @@ exporters:
   prometheusremotewrite/thanos:
     endpoint: "localhost:10908/api/v1/receive"
     namespace: test-app
+    external_labels:
+      thanos: "true"
     resource_to_telemetry_conversion:
       enabled: true
 service:
