@@ -1,4 +1,4 @@
-import os
+import os, uuid
 
 from fastapi import FastAPI
 
@@ -33,5 +33,10 @@ metrics.set_meter_provider(meterProvider)
 @app.get("/hello")
 def read_root():
     return {"messsage": "Hello!"}
+
+@app.get("/uuid")
+def read_uuid():
+    myuuid = uuid.uuid4()
+    return {"messsage": str(myuuid)}
 
 FastAPIInstrumentor.instrument_app(app)
