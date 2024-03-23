@@ -31,7 +31,7 @@ meterProvider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(meterProvider)
 
 @app.get("/hello")
-def read_root():
+def read_hello():
     return {"messsage": "Hello!"}
 
 @app.get("/uuid")
