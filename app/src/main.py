@@ -39,4 +39,4 @@ def read_uuid():
     myuuid = uuid.uuid4()
     return {"messsage": str(myuuid)}
 
-FastAPIInstrumentor.instrument_app(app)
+FastAPIInstrumentor.instrument_app(app, excluded_urls="hello")
