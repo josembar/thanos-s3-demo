@@ -1,3 +1,3 @@
-FROM quay.io/thanos/thanos:main-2024-03-21-4a2a455
+FROM quay.io/thanos/thanos:v0.34.1
 
 COPY bucket.yaml /
